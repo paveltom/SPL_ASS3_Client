@@ -12,5 +12,7 @@ include_directories(include)
 
 add_executable(Client
         include/connectionHandler.h
+        include/EncoderDecoder.h
         src/connectionHandler.cpp
-        src/echoClient.cpp)
+        src/twoThreadClient.cpp
+        src/EncoderDecoder.cpp)
