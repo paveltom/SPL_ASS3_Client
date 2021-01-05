@@ -17,8 +17,6 @@ int main (int argc, char *argv[]) {
         std::cerr << "Cannot connect to " << host << ":" << port << std::endl;
         return 1;
     }
-	
-	//From here we will see the rest of the ehco client implementation:
     while (1) {
         const short bufsize = 1024;
         char buf[bufsize];
@@ -46,7 +44,10 @@ int main (int argc, char *argv[]) {
         }
         
 		len=answer.length();
-		// A C string must end with a 0 char delimiter.  When we filled the answer buffer from the socket
+		// A C string must end with a 0 char d    //task1 = new task(buf, bufSize)
+        //   // thread getFromKey(ref((task1));
+        //
+        //	//From here we will see the rest of the ehco client implementation:elimiter.  When we filled the answer buffer from the socket
 		// we filled up to the \n char - we must make sure now that a 0 char is also present. So we truncate last character.
         answer.resize(len-1);
         std::cout << "Reply: " << answer << " " << len << " bytes " << std::endl << std::endl;
