@@ -12,7 +12,7 @@ class EncoderDecoder {
 public:
     EncoderDecoder();
 
-    const char bytes[] encode(string& msg);
+    const char* encode(string& msg); //returns bytes[]
     const string decode(const char bytes[]);
     /*
     short bytesToShort(char* bytesArr)
