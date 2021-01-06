@@ -1,20 +1,23 @@
 #ifndef CLIENT_TASK_H
 #define CLIENT_TASK_H
 
+#include "ConnectionHandler.h"
 #include <stdlib.h>
 #include <iostream>
 #include <mutex>
 #include <thread>
+#include <boost/asio.hpp>
 
 class Task{
-private:
-    int _id;
-    std::mutex& _mutex;
-    ConnectionHandler& _ch;
 public:
     Task (const ConnectionHandler& ch, int id, std::mutex& mutex);
     virtual ~Task();
     virtual void run() = 0;
+
+private:
+    int _id;
+    std::mutex& _mutex;
+    ConnectionHandler* _ch;
 };
 
 //        for (int i= 0; i < 100; i++){

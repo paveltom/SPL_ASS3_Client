@@ -1,7 +1,10 @@
 #include "../include/Task.h"
+#include "../include/ConnectionHandler.h"
+#include <stdlib.h>
+#include <iostream>
+#include <mutex>
+#include <thread>
 
-
-Task::Task(const ConnectionHandler& ch, int id, std::mutex&) : _ch(ch) _id(id), _mutex(mutex) {}
+Task::Task(const ConnectionHandler &ch, int id, std::mutex &mutex) : _ch(ch), _id(id), _mutex(mutex) {}
 Task::~Task() = default;
-
-//Tree::Tree(int rootLabel) : node(rootLabel), children(vector<Tree*>()) {
+//Task::Task(const ConnectionHandler &ch, int id, std::mutex &mutex) { }

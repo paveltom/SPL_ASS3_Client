@@ -11,7 +11,10 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(include)
 
 add_executable(Client
+        src/main.cpp
         src/ConnectionHandler.cpp
         src/EncoderDecoder.cpp
-        src/main.cpp)
+        src/Task.cpp
+        src/KeyboardTask.cpp
+        src/NetTask.cpp)
 
