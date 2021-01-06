@@ -1,10 +1,11 @@
-#include "../include/connectionHandler.h"
+#include "../include/ConnectionHandler.h"
 #include "../include/Task.h"
 #include "../include/EncoderDecoder.h"
 
-#include <stdlib.h>
 #include <stdexcept>
-
+#include <iostream>
+#include <thread>
+#include <mutex>
 
 using namespace std;
 
@@ -26,28 +27,28 @@ int main (int argc, char *argv[]) {
     }
 
     std::mutex mutex;
-    class : public Task (1, mutex){
-        void run(){
-            // operating user keyboard input and output to terminal (so there will be no parallel tries to print and write in terminal)
-        }
-    } keyboardTask;
 
-    class : public Task (2, mutex){
-        void run(){
-            // operating socket transferring in both directions - working with connectionHolder
-        }
-    } netTask;
+    KeyboardTask keyboardTask(connectionHandler, 1, mutex);
+    NetTask netTask(connectionHandler, 2, mutex);
 
     std::thread th1(&Task::run, &keyboardTask);
     std::thread th2(&Task::run, &netTask);
-    th1.join(); // or detach()
-    th2.join(); //or detach()
+    th1.join(); // or detach()?
+    th2.join(); //or detach()?
+
+
+
+
+
+
+
+
 
     while (1) {
         const short bufsize = 1024;
-        char bufKeyboard[bufsize];
+        char buf[bufsize];
         //char bufNet[bufsize];
-        std::cin.getline(bufKeyboard, bufsize);
+        std::cin.getline(buf, bufsize);
 		std::string line(buf);
 		int len=line.length();
         if (!connectionHandler.sendLine(line)) {

@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(include)
 
 add_executable(Client
-        src/connectionHandler.cpp
+        src/ConnectionHandler.cpp
         src/EncoderDecoder.cpp
         src/main.cpp)
 
